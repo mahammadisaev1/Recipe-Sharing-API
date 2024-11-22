@@ -61,14 +61,14 @@ public class UserController {
 
     @PostMapping("/roles")
     public ResponseEntity<Role> createRole(@RequestBody Role role) {
-        // Eğer aynı isimde bir rol varsa hata döndür
+        // If any existing role matches new role name, then return error
 
         Optional<Role> existingRole = roleRepo.findByName(role.getName());
         if (existingRole.isPresent()) {
             return new ResponseEntity<>(HttpStatus.CONFLICT); // 409 Conflict
         }
 
-        // Yeni rol kaydet
+
         Role savedRole = roleRepo.save(role);
         return new ResponseEntity<>(savedRole, HttpStatus.CREATED); // 201 Created
     }

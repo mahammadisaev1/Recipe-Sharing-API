@@ -39,7 +39,7 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
                 username = jwtUtil.extractUsername(token);
                 List<String> roles = jwtUtil.extractRoles(token); // Rolleri token'dan al
 
-                // Kullanıcının yetkilerini ayarla
+                // Configure authorites of user
                 List<GrantedAuthority> authorities = roles.stream()
                         .map(SimpleGrantedAuthority::new)
                         .collect(Collectors.toList());

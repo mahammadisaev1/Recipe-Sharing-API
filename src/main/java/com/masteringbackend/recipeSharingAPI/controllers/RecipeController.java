@@ -28,11 +28,11 @@ public class RecipeController {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         String username = authentication.getName(); // Kullanıcı adı (JWT'den geliyor)
 
-        // Kullanıcıyı veritabanında bul
+        // Find user in db
         User owner = userService.getUserByUsername(username)
                 .orElseThrow(() -> new RuntimeException("User not found"));
 
-        // Recipe'nin owner alanını ayarla
+        // set that user as an owner of recipe
         recipe.setOwner(owner);
 
         return recipeService.createRecipe(recipe);

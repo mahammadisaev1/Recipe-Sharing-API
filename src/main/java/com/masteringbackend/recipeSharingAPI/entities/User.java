@@ -27,7 +27,7 @@ public class User {
     @Column(unique = true, nullable = false)
     private String email;
 
-    @ManyToMany(fetch = FetchType.EAGER) // Roller otomatik olarak yüklenecek
+    @ManyToMany(fetch = FetchType.EAGER) // Roles will load automatically
     @JoinTable(
             name = "user_roles",
             joinColumns = @JoinColumn(name = "user_id"),

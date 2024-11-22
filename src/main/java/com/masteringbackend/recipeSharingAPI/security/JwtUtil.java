@@ -49,7 +49,7 @@ public class JwtUtil {
                 .parseClaimsJws(token)
                 .getBody();
 
-        // Rolleri liste olarak döndür
+        // Return roles as a list
         return claims.get("roles", List.class);
     }
 
